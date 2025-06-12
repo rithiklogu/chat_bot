@@ -12,7 +12,7 @@ list_of_files = [
     "data",
     "src/data_scrap.py",
     "src/data_preprocessing.py",
-    "llm_pipeline.py",
+    "src/llm_pipeline.py",
     "setup.py",
     "app.py",
     ".env"
