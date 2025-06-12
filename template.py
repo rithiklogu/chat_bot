@@ -15,6 +15,7 @@ list_of_files = [
     "src/llm_pipeline.py",
     "src/__init__.py",
     "setup.py",
+    "requirements.txt",
     "app.py",
     ".env"
 ]
