@@ -130,7 +130,9 @@ celerybeat.pid
 # Environments
 .env
 .venv
+rag_chat_bot/
 env/
+venv/
 venv/
 ENV/
 env.bak/
