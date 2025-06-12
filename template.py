@@ -8,12 +8,11 @@ logging.basicConfig(level=logging.INFO, format='[%(asctime)s]: [%(message)s]')
 # File and folder list
 list_of_files = [
     "__init__.py",
-    "config.py",
     "data",
-    "src/data_scrap.py",
-    "src/data_preprocessing.py",
+    "src/prompt.py",
     "src/llm_pipeline.py",
     "src/__init__.py",
+    "notebook/demo.ipynb",
     "setup.py",
     "requirements.txt",
     "app.py",
