@@ -1,4 +1,4 @@
-from src.helper import load_pdf_file, text_split, download_hugging_face_embeddings
+from src.llm_pipeline import load_pdf_file, text_split, download_hugging_face_embeddings
 from langchain_community.vectorstores import Chroma
 from dotenv import load_dotenv
 import os
