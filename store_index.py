@@ -1,8 +1,11 @@
 from transformers import AutoTokenizer
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.schema import Document
-from langchain_community.embeddings import HuggingFaceEmbeddings
-from langchain_community.vectorstores import Chroma
+# from langchain_community.embeddings import HuggingFaceEmbeddings
+# from langchain_community.vectorstores import Chroma
+from langchain_chroma import Chroma
+from langchain_huggingface import HuggingFaceEmbeddings
+
 from src.llm_pipeline import load_pdf_file,text_split,clean_and_tokenize_chunks,download_hugging_face_embeddings
 
 # Load and process the PDF
