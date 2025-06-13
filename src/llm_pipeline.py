@@ -2,7 +2,7 @@ from langchain.document_loaders import PyPDFLoader, DirectoryLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.embeddings import HuggingFaceEmbeddings
 
-import fitz  # PyMuPDF
+import fitz 
 import re
 from transformers import AutoTokenizer
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -11,7 +11,6 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import Chroma
 
 
-# Step 1: Extract text from PDF
 def load_pdf_file(pdf_path):
     doc = fitz.open(pdf_path)
     text_list = [Document(page_content=page.get_text()) for page in doc]
@@ -19,18 +18,13 @@ def load_pdf_file(pdf_path):
     return text_list
 
 
-# Step 2: Split text into chunks
 def text_split(extracted_data):
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=20)
     text_chunks = text_splitter.split_documents(extracted_data)
     return text_chunks
 
 
-# Load BERT tokenizer
 tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
-
-
-# Step 3: Clean and tokenize each chunk
 def clean_and_tokenize_chunks(text_chunks):
     all_tokens = []
     cleaned_texts = []
@@ -45,8 +39,6 @@ def clean_and_tokenize_chunks(text_chunks):
 
     return cleaned_texts, all_tokens
 
-
-# Step 4: Load Hugging Face sentence transformer embeddings
 def download_hugging_face_embeddings():
     embeddings = HuggingFaceEmbeddings(model_name='sentence-transformers/all-MiniLM-L6-v2')
     return embeddings
