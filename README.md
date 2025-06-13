@@ -3,7 +3,7 @@
 A RESTful chatbot service built using **Flask** and powered by **Groq’s LLaMA3-8B model**, enhanced with **RAG (Retrieval-Augmented Generation)** using a custom medical knowledge base for cats and dogs.
 
 ```bash
-git clone https://github.com/yourusername/chat_bot.git
+git clone https://github.com/rithiklogu/chat_bot
 cd chat_bot
 
 conda create -p env python=3.10 -y
