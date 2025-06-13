@@ -1,6 +1,10 @@
 sentence-transformers
+pymupdf
 chromadb
+langchain_chroma
+langchain_huggingface
 langchain
+langchain_groq
 flask
 pypdf
 python-dotenv

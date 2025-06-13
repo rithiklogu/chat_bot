@@ -6,8 +6,8 @@ A RESTful chatbot service built using **Flask** and powered by **Groq’s LLaMA3
 git clone https://github.com/yourusername/chat_bot.git
 cd chat_bot
 
-conda create -n rag_chat_bot python=3.10 -y
-conda activate rag_chat_bot
+conda create -p env python=3.10 -y
+conda activate ./env
 
 pip install -r requirements.txt
 
