@@ -15,6 +15,7 @@ list_of_files = [
     "notebook/demo.ipynb",
     "setup.py",
     "requirements.txt",
+    "vector_store.py",
     "app.py",
     ".env"
 ]

@@ -1,4 +1,5 @@
-sentence-transformers==2.2.2
+sentence-transformers
+chromadb
 langchain
 flask
 pypdf
@@ -7,6 +8,7 @@ pinecone[grpc]
 langchain-community
 langchain-experimental
 transformers
+streamlit
 torch
 groq  # Add Groq framework
 
