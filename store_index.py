@@ -1,29 +1,48 @@
-from src.llm_pipeline import load_pdf_file, text_split, download_hugging_face_embeddings
+from transformers import AutoTokenizer
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.schema import Document
+from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import Chroma
-from dotenv import load_dotenv
-import os
+from src.llm_pipeline import load_pdf_file,text_split,clean_and_tokenize_chunks,download_hugging_face_embeddings
 
-# Load environment variables
-load_dotenv()
-
-# Load and process the PDF data
-extracted_data = load_pdf_file(data="Data/")
+# Load and process the PDF
+extracted_data = load_pdf_file(r"C:\Users\rithi\Desktop\GEN_AI\chat_bot\data\Medicines_for_Cats_and_Dogs_final.pdf")  
 text_chunks = text_split(extracted_data)
+cleaned_texts, all_tokens = clean_and_tokenize_chunks(text_chunks)
 
-# Load Hugging Face embeddings
+# Convert cleaned texts to LangChain Document objects
+cleaned_documents = [Document(page_content=text) for text in cleaned_texts]
+
+# Load embeddings
 embeddings = download_hugging_face_embeddings()
 
-# Define the local storage directory for ChromaDB
+# Define ChromaDB directory
 db_directory = "./chroma_db"
 
-# Create or load the Chroma vector store
+# Initialize Chroma vector store
 docsearch = Chroma(
     persist_directory=db_directory,
     embedding_function=embeddings,
 )
 
-# Add documents to ChromaDB
-docsearch.add_documents(text_chunks)
+# Add cleaned documents (not raw, not tokens)
+docsearch.add_documents(cleaned_documents)
 
-# Save the vector store (ensures persistence across restarts)
+# Persist the vector DB
 docsearch.persist()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
