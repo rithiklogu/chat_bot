@@ -20,15 +20,14 @@ run: python app.py
 It will run on * Running on http://127.0.0.1:8000 *
 
 Test using Postman:
+
 Method: GET
 URL: http://127.0.0.1:8000 
 You can see: Welcome to the Pet Medical Chatbot API!
 
 
 Method: POST
-
 URL: http://127.0.0.1:8000/chat
-
 Body: raw → JSON
 
 {
