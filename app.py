@@ -31,13 +31,14 @@ llm = ChatGroq(model_name="llama3-8b-8192", temperature=0.5, max_tokens=500)
 # Step 3: Prompt template
 prompt = ChatPromptTemplate.from_messages([
     ("system", 
-     "You are an assistant for question-answering tasks. "
-     "Use the following pieces of retrieved context to answer the question. "
-     "If you don't know the answer, say 'This is out of context, I am a helpful pet's (Cat and Dog) virtual medical assistant.' "
-     "Use three sentences maximum and keep the answer concise.\n\n"),
-    ("human", "{context}\n\n{input}"),
+     "You are a highly reliable medical assistant for cats and dogs. "
+     "Answer the question **only** using the provided context below. "
+     "If the answer is not present in the context, clearly reply: "
+     "'This is out of context, I am a helpful pet's (Cat and Dog) virtual medical assistant.' "
+     "Do not guess or make up information. Keep the response factual, concise (max 3 sentences), and context-grounded."),
+    
+    ("human", "{context}\n\n{input}")
 ])
-
 # Step 4: RAG pipeline
 question_answer_chain = create_stuff_documents_chain(llm, prompt)
 rag_chain = create_retrieval_chain(retriever, question_answer_chain)
@@ -47,7 +48,7 @@ rag_chain = create_retrieval_chain(retriever, question_answer_chain)
 def home():
     return jsonify({
         "message": "Welcome to the Pet Medical Chatbot API!",
-        # "usage": "Send a POST request to /chat with JSON: { 'message': 'your question' }"
+
     })
 
 # POST /chat route
